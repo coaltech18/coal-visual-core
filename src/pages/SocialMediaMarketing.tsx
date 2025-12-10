@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, Image, FileText, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -12,7 +14,8 @@ const SocialMediaMarketing = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -94,6 +97,7 @@ const SocialMediaMarketing = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

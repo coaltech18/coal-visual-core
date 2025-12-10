@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 import { LayoutDashboard, Check, ArrowRight, BarChart3, Users, Shield, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -51,7 +53,8 @@ const AppDevelopment = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -203,6 +206,7 @@ const AppDevelopment = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

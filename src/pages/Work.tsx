@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -51,7 +53,8 @@ const Work = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -83,33 +86,43 @@ const Work = () => {
                   key={project.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-all hover:-translate-y-1"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group p-6 rounded-lg border border-border/20 bg-card/50 backdrop-blur-sm hover:border-accent/30 hover:bg-card/80 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="flex items-start justify-between mb-3">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="flex items-start justify-between mb-3 relative z-10">
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <span
+                        <motion.span
                           key={tag}
                           className="text-xs px-2 py-1 rounded bg-accent/10 text-accent font-medium"
+                          whileHover={{ scale: 1.05 }}
                         >
                           {tag}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-2 text-foreground">{project.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-foreground relative z-10 group-hover:text-accent transition-colors">{project.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 relative z-10">{project.description}</p>
                   
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors"
+                    className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors relative z-10 group/link"
                   >
                     Visit live site
-                    <ExternalLink className="ml-1 h-3 w-3" />
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 4 }}
+                      transition={{ type: 'spring', stiffness: 400 }}
+                    >
+                      <ExternalLink className="ml-1 h-3 w-3" />
+                    </motion.span>
                   </a>
                 </motion.div>
               ))}
@@ -140,6 +153,7 @@ const Work = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

@@ -1,11 +1,14 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -34,6 +37,7 @@ const Contact = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

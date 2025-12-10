@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, ShoppingCart, LayoutDashboard, Zap, Check, ExternalLink, Palette, Code2, Users, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -118,7 +120,8 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -131,49 +134,123 @@ const Index = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Modern, high-converting websites for <span className="text-accent">founders & startups</span>.
-                </h1>
-                <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+                <motion.h1
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  Modern, high-converting websites for{' '}
+                  <motion.span
+                    className="text-accent inline-block relative"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5, type: 'spring', stiffness: 200 }}
+                  >
+                    <span className="relative z-10">founders & startups</span>
+                    <motion.span
+                      className="absolute inset-0 bg-accent/20 blur-xl -z-10"
+                      animate={{ opacity: [0.3, 0.6, 0.3] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  </motion.span>
+                  .
+                </motion.h1>
+                <motion.p
+                  className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
                   CoAl Tech designs and builds clean, responsive websites, e-commerce stores, and SaaS dashboards for clients in India and abroad.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link to="/work" className="btn-primary">
+                </motion.p>
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <Link to="/work" className="btn-primary inline-flex items-center justify-center">
                     View Portfolio
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
-                  <Link to="/contact" className="px-6 py-4 rounded-xl border border-border text-foreground hover:bg-accent/5 transition-colors">
+                  <Link
+                    to="/contact"
+                    className="px-6 py-4 rounded-xl border border-border text-foreground hover:bg-accent/5 transition-all duration-300 hover:border-accent/30 hover:scale-105 inline-flex items-center justify-center"
+                  >
                     Get a Quote
                   </Link>
-                </div>
+                </motion.div>
               </motion.div>
               
-              {/* UI Cards Composition */}
+              {/* Project Showcase */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="hidden lg:grid grid-cols-2 gap-4"
               >
-                <div className="space-y-4">
-                  <div className="p-6 rounded-xl bg-card border border-border/20 glow-subtle">
-                    <div className="h-32 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg mb-3"></div>
-                    <div className="h-2 bg-accent/20 rounded w-3/4 mb-2"></div>
-                    <div className="h-2 bg-muted/30 rounded w-1/2"></div>
-                  </div>
-                  <div className="p-6 rounded-xl bg-card border border-border/20 glow-subtle">
-                    <div className="h-24 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg"></div>
-                  </div>
-                </div>
-                <div className="space-y-4 pt-8">
-                  <div className="p-6 rounded-xl bg-card border border-border/20 glow-subtle">
-                    <div className="h-20 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg mb-3"></div>
-                    <div className="h-2 bg-accent/20 rounded w-2/3 mb-2"></div>
-                    <div className="h-2 bg-muted/30 rounded w-1/2"></div>
-                  </div>
-                  <div className="p-6 rounded-xl bg-card border border-border/20 glow-subtle">
-                    <div className="h-36 bg-gradient-to-br from-accent/20 to-accent/10 rounded-lg"></div>
-                  </div>
-                </div>
+                {[
+                  { 
+                    name: 'Hybits Suite', 
+                    image: '/projects/hybits-suite-dashboard.png',
+                    url: 'https://suite.hybits.in',
+                    alt: 'Hybits Suite Business Management Platform Dashboard'
+                  },
+                  { 
+                    name: 'MatchPod', 
+                    image: '/projects/matchpod-hero.png',
+                    url: 'https://matchpod.in',
+                    alt: 'MatchPod Roommate Matching Platform'
+                  },
+                  { 
+                    name: 'Animathon', 
+                    image: '/projects/animathon-hero.png',
+                    url: 'https://animathon.in',
+                    alt: 'Animathon Animation Competition Platform'
+                  },
+                  { 
+                    name: 'Hybits', 
+                    image: '/projects/hybits-dishware.png',
+                    url: 'https://hybits.in',
+                    alt: 'Hybits Sterilised Dishware Service'
+                  },
+                ].map((project, index) => (
+                  <motion.a
+                    key={project.name}
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative rounded-xl overflow-hidden border border-border/20 bg-card/50 backdrop-blur-sm hover:border-accent/30 transition-all duration-300"
+                    whileHover={{ scale: 1.02, y: -4 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="aspect-[4/3] relative overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.alt}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          // Fallback if image doesn't exist yet
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          target.parentElement!.innerHTML = `
+                            <div class="w-full h-full bg-gradient-to-br from-accent/10 to-muted/20 flex items-center justify-center">
+                              <span class="text-muted-foreground text-sm">${project.name}</span>
+                            </div>
+                          `;
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <p className="text-sm font-semibold text-foreground">{project.name}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
               </motion.div>
             </div>
           </div>
@@ -199,15 +276,30 @@ const Index = () => {
                   key={service.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-all hover:-translate-y-1"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group p-6 rounded-lg border border-border/20 bg-card/50 backdrop-blur-sm hover:border-accent/30 hover:bg-card/80 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                 >
-                  <service.icon className="h-10 w-10 text-accent mb-4" />
-                  <h3 className="text-lg font-semibold mb-2 text-foreground">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
-                  <Link to={service.href} className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <motion.div
+                    className="relative z-10"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <service.icon className="h-10 w-10 text-accent mb-4" />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold mb-2 text-foreground relative z-10">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 relative z-10">{service.description}</p>
+                  <Link to={service.href} className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors relative z-10 group/link">
                     Learn more
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 4 }}
+                      transition={{ type: 'spring', stiffness: 400 }}
+                    >
+                      <ArrowRight className="ml-1 h-3 w-3" />
+                    </motion.span>
                   </Link>
                 </motion.div>
               ))}
@@ -235,24 +327,36 @@ const Index = () => {
                   key={project.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-all hover:-translate-y-1"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group p-6 rounded-lg border border-border/20 bg-card/50 backdrop-blur-sm hover:border-accent/30 hover:bg-card/80 hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-xs px-2 py-1 rounded bg-accent/10 text-accent font-medium">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="flex items-start justify-between mb-3 relative z-10">
+                    <motion.span
+                      className="text-xs px-2 py-1 rounded bg-accent/10 text-accent font-medium"
+                      whileHover={{ scale: 1.05 }}
+                    >
                       {project.tag}
-                    </span>
+                    </motion.span>
                   </div>
-                  <h3 className="text-lg font-semibold mb-2 text-foreground">{project.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
+                  <h3 className="text-lg font-semibold mb-2 text-foreground relative z-10 group-hover:text-accent transition-colors">{project.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 relative z-10">{project.description}</p>
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors"
+                    className="inline-flex items-center text-sm text-accent hover:text-accent/80 transition-colors relative z-10 group/link"
                   >
                     Visit live site
-                    <ExternalLink className="ml-1 h-3 w-3" />
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 4 }}
+                      transition={{ type: 'spring', stiffness: 400 }}
+                    >
+                      <ExternalLink className="ml-1 h-3 w-3" />
+                    </motion.span>
                   </a>
                 </motion.div>
               ))}
@@ -285,14 +389,21 @@ const Index = () => {
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-lg border border-border bg-card text-center"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  className="group p-6 rounded-lg border border-border/20 bg-card/50 backdrop-blur-sm hover:border-accent/30 hover:bg-card/80 hover:shadow-lg transition-all duration-300 text-center relative overflow-hidden"
                 >
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <motion.div
+                    className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10 group-hover:bg-accent/20 transition-colors"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                  >
                     <item.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </motion.div>
+                  <h3 className="text-lg font-semibold mb-2 text-foreground relative z-10 group-hover:text-accent transition-colors">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground relative z-10">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -313,20 +424,44 @@ const Index = () => {
               </motion.div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.step}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-center"
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ delay: index * 0.1, type: 'spring', stiffness: 100 }}
+                  whileHover={{ y: -6, scale: 1.05 }}
+                  className="text-center group relative"
                 >
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-accent/20">
-                    <span className="text-accent font-bold text-sm">{step.step}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 text-foreground">{step.title}</h3>
+                  <motion.div
+                    className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 border border-accent/20 group-hover:bg-accent/20 group-hover:border-accent/40 transition-all duration-300 relative"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <span className="text-accent font-bold text-sm relative z-10">{step.step}</span>
+                    <motion.div
+                      className="absolute inset-0 bg-accent/20 rounded-full"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileHover={{ scale: 1.5, opacity: 0 }}
+                      transition={{ duration: 0.6 }}
+                    />
+                  </motion.div>
+                  <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">{step.title}</h3>
                   <p className="text-sm text-muted-foreground">{step.description}</p>
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden lg:block absolute top-6 left-full w-full h-0.5 bg-border/20 -translate-x-1/2">
+                      <motion.div
+                        className="h-full bg-accent/30"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+                        style={{ transformOrigin: 'left' }}
+                      />
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -361,6 +496,7 @@ const Index = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

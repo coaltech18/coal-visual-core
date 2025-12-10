@@ -59,7 +59,7 @@ const Navigation = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border/20' 
+          ? 'bg-background/90 backdrop-blur-md border-b border-border/20 shadow-lg' 
           : 'bg-transparent'
       }`}
     >
@@ -99,16 +99,21 @@ const Navigation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + index * 0.1 }}
               >
-                <Link
-                  to={item.href}
-                  className={`transition-colors duration-300 animated-link ${
-                    location.pathname === item.href 
-                      ? 'text-accent' 
-                      : 'text-foreground hover:text-accent'
-                  }`}
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  transition={{ type: 'spring', stiffness: 400 }}
                 >
-                  {item.name}
-                </Link>
+                  <Link
+                    to={item.href}
+                    className={`transition-colors duration-300 animated-link relative ${
+                      location.pathname === item.href 
+                        ? 'text-accent' 
+                        : 'text-foreground hover:text-accent'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               </motion.div>
             ))}
           </div>

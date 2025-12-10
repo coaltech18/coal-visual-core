@@ -2,6 +2,19 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import { copyFileSync } from "fs";
+import { resolve } from "path";
+
+// Plugin to copy contact.php to dist
+const copyPhpPlugin = () => ({
+  name: 'copy-php',
+  closeBundle() {
+    copyFileSync(
+      resolve(__dirname, 'contact.php'),
+      resolve(__dirname, 'dist', 'contact.php')
+    );
+  },
+});
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -13,6 +26,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
+    copyPhpPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -32,7 +46,9 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
+    copyPublicDir: true,
   },
+  publicDir: 'public',
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'lucide-react'],
   },

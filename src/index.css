@@ -110,6 +110,35 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Smooth scroll with offset for fixed nav */
+  html {
+    scroll-padding-top: 80px;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background-color: hsl(var(--coal-accent) / 0.3);
+    color: hsl(var(--coal-accent));
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--coal-accent) / 0.3);
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--coal-accent) / 0.5);
+  }
 }
 
 @layer components {
@@ -137,6 +166,24 @@ All colors MUST be HSL.
     transition: var(--transition-smooth);
   }
   
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--coal-accent) / 0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .service-card:hover::before {
+    opacity: 1;
+  }
+  
   .service-card:hover {
     @apply border-accent/30 bg-card/80;
     transform: translateY(-8px);
@@ -146,12 +193,17 @@ All colors MUST be HSL.
   /* Interactive buttons */
   .btn-primary {
     @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold;
-    transition: var(--transition-bounce);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .btn-primary:hover {
     @apply scale-105;
     box-shadow: var(--glow-primary);
+    transform: translateY(-2px);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98) translateY(0);
   }
   
   /* Animated underlines */
@@ -162,10 +214,19 @@ All colors MUST be HSL.
   .animated-link::after {
     content: '';
     @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent;
-    transition: width 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .animated-link:hover::after {
     @apply w-full;
   }
+  
+  /* Gradient text effect */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--coal-accent)), hsl(var(--coal-accent) / 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
 }

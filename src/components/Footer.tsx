@@ -55,13 +55,18 @@ const Footer = () => {
             <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <div className="space-y-2">
               {quickLinks.map((link) => (
-                <Link
+                <motion.div
                   key={link.name}
-                  to={link.href}
-                  className="block text-muted-foreground hover:text-accent transition-colors duration-300 animated-link"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  {link.name}
-                </Link>
+                  <Link
+                    to={link.href}
+                    className="block text-muted-foreground hover:text-accent transition-colors duration-300 animated-link"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>

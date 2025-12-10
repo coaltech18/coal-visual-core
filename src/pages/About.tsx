@@ -1,5 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollToTop from '@/components/ScrollToTop';
 import { motion } from 'framer-motion';
 import { Code2, LayoutDashboard, ShoppingCart, Palette, Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -36,7 +38,8 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollProgress />
       <Navigation />
       
       <main>
@@ -168,6 +171,7 @@ const About = () => {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
