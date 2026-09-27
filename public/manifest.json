@@ -1,21 +1,16 @@
 {
-  "name": "CoAl Tech - Digital Solutions",
-  "short_name": "CoAl Tech",
-  "description": "Modern digital solutions for businesses",
+  "name": "Coaltech",
+  "short_name": "Coaltech",
+  "description": "Website design, development, hosting and AI creative",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#f4f3ed",
+  "theme_color": "#07162f",
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    },
-    {
-      "src": "/placeholder.svg",
-      "type": "image/svg+xml",
-      "sizes": "any"
     }
   ]
-} 
+}
