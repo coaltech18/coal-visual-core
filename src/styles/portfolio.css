@@ -1,0 +1,378 @@
+.portfolio-wall {
+  gap: clamp(56px, 8vw, 112px) clamp(24px, 4vw, 64px);
+}
+
+.portfolio-wall .project-tile {
+  grid-column: span 7;
+}
+
+.portfolio-wall .project-tile:nth-child(2) {
+  grid-column: span 5;
+  margin-top: clamp(96px, 13vw, 190px);
+}
+
+.portfolio-wall .project-tile:nth-child(3) {
+  grid-column: span 5;
+  margin-top: 0;
+}
+
+.portfolio-wall .project-tile:nth-child(4) {
+  grid-column: span 7;
+  margin-top: clamp(48px, 7vw, 104px);
+}
+
+.portfolio-wall .project-image-link {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding: clamp(16px, 2.2vw, 32px);
+  color: var(--ink);
+  background: var(--aluminium);
+  outline-offset: 6px;
+}
+
+.portfolio-wall .project-tile--cobalt .project-image-link {
+  color: var(--white);
+  background: var(--cobalt);
+}
+
+.portfolio-wall .project-tile--ink .project-image-link {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.project-frame-rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font: 10px / 1.4 ui-monospace, monospace;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.project-frame-arrow {
+  font: 24px / 1 Arial, sans-serif;
+  transition: transform var(--motion-ui) var(--ease-out);
+}
+
+.project-image-stage {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.portfolio-wall .project-image-stage img {
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+  transform: scale(1);
+  transition: transform 550ms var(--ease-out);
+}
+
+.project-frame-action {
+  justify-self: end;
+  font: 10px / 1.4 ui-monospace, monospace;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.portfolio-wall .project-meta > div {
+  margin: 24px 0 16px;
+  gap: 12px;
+}
+
+.portfolio-wall .project-meta h2,
+.portfolio-wall .project-meta h3 {
+  margin-bottom: 16px;
+  font-size: clamp(30px, 3.4vw, 50px);
+  font-weight: 600;
+  letter-spacing: -.055em;
+  line-height: 1.04;
+}
+
+.portfolio-wall .project-meta h2 a,
+.portfolio-wall .project-meta h3 a {
+  display: inline-block;
+}
+
+.portfolio-wall .project-meta h2 span,
+.portfolio-wall .project-meta h3 span {
+  display: inline-block;
+  vertical-align: .04em;
+  transition: transform var(--motion-ui) var(--ease-out);
+}
+
+.portfolio-wall .project-meta p {
+  max-width: 450px;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.55;
+}
+
+.portfolio-wall .project-tile:focus-within .project-image-stage img,
+.portfolio-wall .project-tile:hover .project-image-stage img {
+  transform: scale(1.025);
+}
+
+.portfolio-wall .project-tile:focus-within .project-frame-arrow,
+.portfolio-wall .project-tile:hover .project-frame-arrow,
+.portfolio-wall .project-meta a:hover span,
+.portfolio-wall .project-meta a:focus-visible span {
+  transform: translate(3px, -3px);
+}
+
+.portfolio-index {
+  padding-top: clamp(32px, 4vw, 60px);
+}
+
+.portfolio-index .section-heading {
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+.portfolio-index .section-heading h2 {
+  font-size: clamp(40px, 5.4vw, 80px);
+  font-weight: 600;
+  letter-spacing: -.055em;
+  line-height: .98;
+}
+
+.portfolio-index .section-heading h2 em {
+  color: var(--cobalt);
+  font-style: normal;
+}
+
+.portfolio-index .website-index-intro {
+  margin-top: 28px;
+  max-width: 450px;
+}
+
+.portfolio-index .website-index-list {
+  align-items: start;
+  gap: clamp(44px, 6vw, 88px) clamp(24px, 4vw, 64px);
+}
+
+.portfolio-index.website-index--preview .website-index-entry:nth-child(even) {
+  margin-top: 64px;
+}
+
+.portfolio-index .website-index-visual {
+  border: 0;
+  background: var(--aluminium);
+}
+
+.portfolio-index .website-index-visual img {
+  transform: scale(1);
+  transition: transform 550ms var(--ease-out);
+}
+
+.website-index-visit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 14px 18px;
+  color: var(--white);
+  background: var(--ink);
+  font: 10px / 1.3 ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--motion-ui) var(--ease-out), transform var(--motion-ui) var(--ease-out);
+}
+
+.portfolio-index .website-index-meta {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 24px;
+  gap: 14px 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ink);
+  margin-top: 16px;
+}
+
+.website-index-number {
+  padding-top: 1px;
+  font: 10px / 1.5 ui-monospace, monospace;
+  color: var(--muted);
+}
+
+.website-index-caption {
+  min-width: 0;
+  grid-column: 2;
+}
+
+.portfolio-index .website-index-caption .meta-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: .045em;
+  line-height: 1.5;
+}
+
+.portfolio-index .website-index-entry h3 {
+  margin: 12px 0 0;
+  font-size: clamp(25px, 2.6vw, 40px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.05em;
+  transition: color var(--motion-ui) var(--ease-out);
+}
+
+.portfolio-index .website-index-domain {
+  grid-column: 2;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.portfolio-index .website-index-arrow {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.portfolio-index .website-index-entry:focus-visible h3 {
+  color: var(--cobalt);
+}
+
+.portfolio-index .website-index-entry:focus-visible .website-index-arrow {
+  transform: translate(3px, -3px);
+}
+
+.portfolio-index .website-index-entry:focus-visible .website-index-visual img,
+.portfolio-index .website-index-entry:hover .website-index-visual img {
+  transform: scale(1.025);
+}
+
+.portfolio-index .website-index-entry:focus-visible .website-index-visit,
+.portfolio-index .website-index-entry:hover .website-index-visit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-index .section-link {
+  margin-top: clamp(40px, 6vw, 88px);
+}
+
+@media (max-width: 1100px) {
+  .portfolio-wall {
+    column-gap: 24px;
+  }
+
+  .portfolio-wall .project-tile:nth-child(2) {
+    margin-top: 110px;
+  }
+
+  .portfolio-wall .project-tile:nth-child(4) {
+    margin-top: 64px;
+  }
+
+  .portfolio-wall .project-meta > div {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .portfolio-wall .project-meta > div > span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .portfolio-wall {
+    grid-template-columns: 1fr;
+    gap: 52px;
+  }
+
+  .portfolio-wall .project-tile,
+  .portfolio-wall .project-tile:nth-child(2),
+  .portfolio-wall .project-tile:nth-child(3),
+  .portfolio-wall .project-tile:nth-child(4) {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  .portfolio-wall .project-image-link {
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .project-frame-rail,
+  .project-frame-action {
+    font-size: 9px;
+  }
+
+  .portfolio-wall .project-meta > div {
+    margin: 20px 0 12px;
+  }
+
+  .portfolio-wall .project-meta h2,
+  .portfolio-wall .project-meta h3 {
+    font-size: clamp(30px, 7vw, 40px);
+    margin-bottom: 12px;
+  }
+
+  .portfolio-wall .project-meta p {
+    font-size: 16px;
+  }
+
+  .portfolio-index .website-index-list {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .portfolio-index.website-index--preview .website-index-entry:nth-child(even) {
+    margin-top: 0;
+  }
+
+  .portfolio-index .website-index-meta {
+    padding-top: 18px;
+    grid-template-columns: 24px minmax(0, 1fr) 24px;
+    gap: 12px 8px;
+  }
+
+  .portfolio-index .website-index-entry h3 {
+    font-size: clamp(25px, 6.7vw, 34px);
+  }
+
+  .portfolio-index .website-index-intro {
+    margin-top: 24px;
+    font-size: 17px;
+  }
+}
+
+@media (hover: none) {
+  .website-index-visit {
+    opacity: 1;
+    transform: none;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-wall .project-image-stage img,
+  .portfolio-wall .project-frame-arrow,
+  .portfolio-wall .project-meta h2 span,
+  .portfolio-wall .project-meta h3 span,
+  .portfolio-index .website-index-visual img,
+  .portfolio-index .website-index-arrow,
+  .website-index-visit {
+    transition: none;
+  }
+
+  .portfolio-wall .project-tile:focus-within .project-image-stage img,
+  .portfolio-wall .project-tile:hover .project-image-stage img,
+  .portfolio-wall .project-tile:focus-within .project-frame-arrow,
+  .portfolio-wall .project-tile:hover .project-frame-arrow,
+  .portfolio-wall .project-meta a:hover span,
+  .portfolio-wall .project-meta a:focus-visible span,
+  .portfolio-index .website-index-entry:focus-visible .website-index-arrow,
+  .portfolio-index .website-index-entry:focus-visible .website-index-visual img,
+  .portfolio-index .website-index-entry:hover .website-index-visual img {
+    transform: none;
+  }
+
+  .website-index-visit {
+    transform: none;
+  }
+}

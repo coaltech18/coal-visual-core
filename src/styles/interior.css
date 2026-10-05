@@ -1,0 +1,289 @@
+.studio-page-hero {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 36px 24px;
+  padding: clamp(42px, 5vw, 72px) 0 clamp(64px, 7vw, 104px);
+}
+
+.studio-page-hero > .meta-label {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+}
+
+.studio-page-hero > .meta-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.studio-page-hero h1 {
+  grid-column: 1 / -1;
+  max-width: 1120px;
+  font-size: clamp(64px, 8.6vw, 132px);
+  font-weight: 700;
+  line-height: .97;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+
+.studio-page-hero .page-hero__intro {
+  grid-column: 7 / -1;
+  max-width: 660px;
+  font-size: clamp(19px, 1.8vw, 25px);
+}
+
+.studio-service-composition {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(36px, 5.5vw, 80px);
+  align-items: start;
+}
+
+.studio-service-composition .service-art {
+  margin: 0;
+  padding: 28px;
+  width: 100%;
+  max-width: none;
+  min-height: 510px;
+  gap: 32px;
+  overflow: hidden;
+}
+
+.studio-service-composition .service-art--site {
+  background: var(--aluminium);
+  justify-content: space-between;
+}
+
+.studio-service-composition .service-art--web {
+  background: var(--cobalt);
+  color: var(--paper);
+}
+
+.studio-service-composition .service-art--web .meta-label {
+  color: inherit;
+}
+
+.studio-service-composition .service-art > .meta-label {
+  font-size: 10px;
+}
+
+.studio-service-composition .service-art figcaption,
+.studio-service-composition .service-art > p {
+  margin: 0;
+  font: 10px/1.5 ui-monospace, monospace;
+  letter-spacing: .03em;
+}
+
+.studio-service-composition .service-site-stage {
+  padding: 28px 0;
+}
+
+.studio-service-composition .service-site-frame {
+  background: var(--paper);
+  transform: rotate(-4deg);
+  box-shadow: 0 14px 28px #07162f24;
+}
+
+.studio-service-composition .service-site-rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 14px;
+  color: var(--ink);
+  font: 9px/1.4 ui-monospace, monospace;
+  border-bottom: 1px solid var(--line);
+}
+
+.studio-service-composition .service-site-frame img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+}
+
+.studio-service-composition .service-art--product .service-site-frame {
+  transform: rotate(3deg);
+}
+
+.studio-service-composition .service-art--creative {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.studio-service-composition .service-art--creative .meta-label {
+  color: inherit;
+}
+
+.studio-service-composition .service-poster-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 380px;
+  padding: 14px 0;
+}
+
+.studio-service-composition .service-poster {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.studio-service-composition .service-poster small {
+  font: 9px/1.4 ui-monospace, monospace;
+}
+
+.studio-service-composition .service-poster--square {
+  width: 58%;
+  aspect-ratio: 1;
+  background: var(--paper);
+  color: var(--ink);
+  transform: rotate(-8deg);
+  z-index: 1;
+}
+
+.studio-service-composition .service-poster--square strong {
+  font-size: clamp(28px, 3.4vw, 50px);
+  font-weight: 800;
+  line-height: .94;
+  letter-spacing: -.06em;
+  margin: 20px 0;
+}
+
+.studio-service-composition .service-poster--square > span {
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.studio-service-composition .service-poster--reel {
+  width: 41%;
+  aspect-ratio: 9 / 16;
+  background: var(--cobalt);
+  color: var(--paper);
+  transform: rotate(7deg);
+  padding: 18px;
+}
+
+.studio-service-composition .service-poster--reel strong {
+  display: grid;
+  font-size: clamp(28px, 3.2vw, 48px);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -.05em;
+  margin: 28px 0;
+}
+
+.studio-service-composition .service-poster--reel strong span:nth-child(2) {
+  color: #a5c7ff;
+}
+
+.studio-service-composition .service-reel-sequence {
+  display: flex;
+  gap: 4px;
+  height: 3px;
+}
+
+.studio-service-composition .service-reel-sequence i {
+  display: block;
+  width: 20%;
+  background: #f4f3ed55;
+}
+
+.studio-service-composition .service-reel-sequence i:first-child {
+  background: var(--paper);
+}
+
+.studio-service-composition .service-deliverables > .meta-label {
+  margin: 0 0 12px;
+}
+
+.studio-service-composition .service-deliverables article {
+  grid-template-columns: 28px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+}
+
+.studio-service-composition .service-deliverables h2 {
+  font-size: clamp(27px, 2.8vw, 40px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.studio-service-composition .service-deliverables p {
+  font-size: 16px;
+  max-width: 520px;
+}
+
+.studio-service-question h2 {
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+.studio-service-cta h2 {
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .studio-service-composition .service-art[data-in-view="true"] .service-poster--square {
+    animation: service-graphic-form 8s var(--ease-in-out, cubic-bezier(.45, 0, .55, 1)) infinite alternate;
+  }
+  .studio-service-composition .service-art[data-in-view="true"] .service-poster--reel {
+    animation: service-reel-form 8s var(--ease-in-out, cubic-bezier(.45, 0, .55, 1)) infinite alternate;
+  }
+}
+
+@keyframes service-graphic-form {
+  to { transform: rotate(-3deg) translateY(-8px); }
+}
+
+@keyframes service-reel-form {
+  to { transform: rotate(3deg) translateY(6px); }
+}
+
+@media (max-width: 1100px) {
+  .studio-page-hero h1 { font-size: clamp(64px, 8.8vw, 96px); }
+  .studio-service-composition .service-art { padding: 24px; min-height: 440px; }
+  .studio-service-composition .service-poster-stage { min-height: 320px; }
+  .studio-service-composition .service-poster { padding: 16px; }
+  .studio-service-composition .service-poster--square strong { font-size: clamp(26px, 3.5vw, 40px); }
+  .studio-service-composition .service-poster--reel strong { font-size: clamp(24px, 3.4vw, 38px); }
+}
+
+@media (max-width: 900px) {
+  .studio-page-hero { gap: 32px 16px; padding: 36px 0 64px; }
+  .studio-page-hero h1 { font-size: clamp(54px, 9vw, 78px); }
+  .studio-page-hero .page-hero__intro { grid-column: 4 / -1; font-size: 20px; }
+  .studio-service-composition { grid-template-columns: 1fr; gap: 36px; }
+  .studio-service-composition .service-art { min-height: 430px; padding: 28px; }
+  .studio-service-composition .service-site-stage { padding: 12px 20px; }
+  .studio-service-composition .service-poster-stage { min-height: 360px; max-width: 480px; margin: 0 auto; }
+  .studio-service-composition .service-poster--square strong { font-size: clamp(34px, 7vw, 60px); }
+  .studio-service-composition .service-poster--reel strong { font-size: clamp(32px, 6.5vw, 52px); }
+  .studio-service-composition .service-deliverables p { max-width: 650px; }
+}
+
+@media (max-width: 600px) {
+  .studio-page-hero { gap: 28px; padding: 32px 0 52px; }
+  .studio-page-hero > .meta-label { font-size: 10px; gap: 16px; line-height: 1.5; }
+  .studio-page-hero > .meta-label::after { min-width: 28px; }
+  .studio-page-hero h1 { font-size: clamp(42px, 11.5vw, 66px); letter-spacing: -.055em; line-height: 1.01; }
+  .studio-page-hero .page-hero__intro { grid-column: 1 / -1; font-size: 18px; }
+  .studio-service-composition .service-art { min-height: 370px; padding: 20px; gap: 20px; }
+  .studio-service-composition .service-art--site { min-height: 320px; }
+  .studio-service-composition .service-site-stage { padding: 8px 0; }
+  .studio-service-composition .service-site-rail { padding: 9px 12px; font-size: 8px; }
+  .studio-service-composition .service-poster-stage { min-height: 280px; gap: 8px; }
+  .studio-service-composition .service-poster { padding: 13px; }
+  .studio-service-composition .service-poster small { font-size: 8px; }
+  .studio-service-composition .service-poster--square strong { font-size: clamp(26px, 7.4vw, 42px); margin: 16px 0; }
+  .studio-service-composition .service-poster--reel strong { font-size: clamp(26px, 7vw, 40px); margin: 20px 0; }
+  .studio-service-composition .service-poster--square > span { font-size: 8px; }
+  .studio-service-composition .service-deliverables article { gap: 12px; padding: 24px 0; }
+  .studio-service-composition .service-deliverables h2 { font-size: 28px; }
+}

@@ -1,22 +1,41 @@
 import Link from 'next/link';
-import ElementIntro from '@/components/ElementIntro';
+import Image from 'next/image';
 import ProjectWall from '@/components/ProjectWall';
 import WebsiteIndex from '@/components/WebsiteIndex';
 import SiteLayout from '@/components/SiteLayout';
+import StudioHero from '@/components/StudioHero';
 import { pageMetadata } from '@/lib/metadata';
 export const metadata = pageMetadata('Website design, hosting & AI creative', 'Coaltech designs and builds websites, provides hosting, and creates AI-assisted graphics, videos and reels.', '/');
 export default function Home() {
   return <SiteLayout>
-    <section className="home-hero">
-      <div className="hero-top"><p className="meta-label">Website design + AI creative</p><ElementIntro /></div>
-      <h1>Make your business <br />easier to <em>understand.</em></h1>
-      <div className="home-hero__foot"><p>Websites that explain what you do. Graphics, videos and reels that give people a reason to look closer.</p><div className="action-row"><Link className="text-link" href="/work">See selected work <span aria-hidden="true">↗</span></Link><Link className="text-link" href="/contact">Tell us what needs to change <span aria-hidden="true">↗</span></Link></div></div>
+    <StudioHero />
+    <section className="studio-origin" data-scene aria-labelledby="origin-title">
+      <div className="origin-equation" aria-label="Cobalt plus Aluminium" data-scene-part><span><small>Cobalt</small><b>Co</b></span><i aria-hidden="true">+</i><span><small>Aluminium</small><b>Al</b></span></div>
+      <div className="origin-copy"><h2 id="origin-title">Different elements.<br />Better together.</h2><p>The weight of engineering. The freedom of design. Our name brings them together. So does our work.</p></div>
     </section>
-    <section className="work-section" aria-labelledby="selected-work"><div className="section-heading"><p className="meta-label">01 / Selected work</p><h2 id="selected-work">A few different<br />kinds of problem.</h2></div><ProjectWall limit={4} /><Link className="section-link" href="/work">Explore the work <span aria-hidden="true">↗</span></Link></section>
+    <section className="work-section studio-work" aria-labelledby="selected-work" data-scene>
+      <div className="studio-section-title" data-scene-part><p className="meta-label">Selected work</p><h2 id="selected-work">Less talk.<br /><span>More proof.</span></h2></div>
+      <ProjectWall limit={4} />
+      <Link className="section-link" href="/work">See selected work <span aria-hidden="true">↗</span></Link>
+    </section>
+    <section className="studio-capabilities" aria-labelledby="capabilities-title">
+      <div className="capabilities-heading" data-scene><h2 id="capabilities-title" data-scene-part>Good ideas deserve<br /><span>a bigger presence.</span></h2><p>We make the website. We make the creative that brings people to it.</p></div>
+      <article className="capability-scene capability-scene--web" data-scene>
+        <div className="capability-copy" data-scene-part><span className="meta-label">Design / Develop / Host</span><h3>Your place<br />on the <em>web.</em></h3><p>From the first page structure to the site people actually use. Website design, development and hosting, considered together.</p><Link className="text-link" href="/services/web-development">Website services <span aria-hidden="true">↗</span></Link></div>
+        <div className="web-scene-art" data-scene-part><div className="web-scene-word" aria-hidden="true">ONLINE.</div><div className="web-scene-screen"><Image src="/projects/live/greyturn.webp" alt="Greyturn website with a bold visual introduction" width={1265} height={712} sizes="(max-width: 768px) 90vw, 46vw" /></div><p className="scene-caption">A real website. A clear first impression.</p></div>
+      </article>
+      <article className="capability-scene capability-scene--creative" data-scene>
+        <div className="creative-scene-art" data-scene-part aria-hidden="true"><div className="creative-poster creative-poster--square"><small>Graphic</small><strong>LOOK<br />CLOSER.</strong><span>One message.<br />A different perspective.</span></div><div className="creative-poster creative-poster--reel"><small>Video / Reels</small><div className="reel-type"><span>MAKE</span><span>IT</span><span>MOVE.</span></div><div className="reel-frames"><i /><i /><i /><i /><i /></div></div></div>
+        <div className="capability-copy" data-scene-part><span className="meta-label">Graphics / Video / Reels</span><h3>Made for<br />a second <em>look.</em></h3><p>AI-assisted graphics, videos and reels shaped around your message. An idea worth seeing, in the format it needs.</p><Link className="text-link" href="/services/ai-marketing">AI marketing <span aria-hidden="true">↗</span></Link></div>
+      </article>
+    </section>
     <WebsiteIndex preview />
-    <section className="capability-section"><div><p className="meta-label">02 / What we do</p><h2>A clear website.<br />Something worth<br />sharing.</h2></div><div className="offering-list"><article><span className="meta-label">Design / Develop / Host</span><h3><Link href="/services/web-development">Your place on the web ↗</Link></h3><p>From the first page structure to the site people actually use. Website design, development and hosting, with the practical details considered together.</p><Link className="text-link" href="/services/web-development">Website services <span aria-hidden="true">↗</span></Link></article><article><span className="meta-label">Graphics / Video / Reels</span><h3><Link href="/services/ai-marketing">Creative for the feed ↗</Link></h3><p>AI-assisted graphics, videos and reels shaped around your message. Start with what you want to say, then choose the format.</p><Link className="text-link" href="/services/ai-marketing">AI marketing <span aria-hidden="true">↗</span></Link></article></div></section>
-    <section className="process-section"><div><p className="meta-label">03 / The starting point</p><h2 className="process-statement">Start with the<br />questions people<br />bring.</h2></div><div className="process-notes"><p>What is this? Is it for me? What happens next? A useful website answers those questions before asking someone to get in touch.</p><Link className="text-link" href="/about#process">How the work takes shape <span aria-hidden="true">↗</span></Link></div></section>
-    <section className="studio-note"><p className="meta-label">04 / Coaltech</p><div><h2>Different elements.<br />Better together.</h2><p>Structure gives an idea somewhere to go. Design makes it worth paying attention to. Coaltech brings the two into the same conversation.</p><Link className="text-link" href="/about">Meet Coaltech <span aria-hidden="true">↗</span></Link></div></section>
+    <section className="studio-method" data-scene aria-labelledby="method-title">
+      <div className="studio-method-heading" data-scene-part><h2 id="method-title">A good-looking site<br />has a job to do.</h2><p>What is this? Is it for me? What happens next? We build around the questions your visitors bring.</p></div>
+      <div className="method-sequence"><div data-scene-part><h3>Get clear.</h3><p>Start with the audience, the message and what needs to change.</p></div><div data-scene-part><h3>Make it real.</h3><p>Bring design and development into the same conversation.</p></div><div data-scene-part><h3>Put it to work.</h3><p>Check the details. Agree the hosting and support. Launch with care.</p></div></div>
+      <Link className="text-link" href="/about#process">How the work takes shape <span aria-hidden="true">↗</span></Link>
+    </section>
+    <section className="studio-statement-scene" data-scene aria-labelledby="studio-title"><h2 id="studio-title" data-scene-part>Thought through.<br /><span>Built with feeling.</span></h2><div><p>Structure gives an idea somewhere to go. Design makes it worth paying attention to. We bring the two together.</p><Link className="text-link" href="/about">Meet Coaltech <span aria-hidden="true">↗</span></Link></div></section>
   </SiteLayout>;
 }
 
